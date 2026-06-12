@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,7 +14,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EstagioTrackerAPP">
         <activity
-            android:name=".telas.MainActivity"
+            android:name=".telas.VagaEditarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".telas.VagaDetalhesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".telas.NovaVagaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".telas.ConfigActivity"
+            android:exported="false" />
+        <activity
+            android:name=".telas.KanbanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".telas.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".telas.CadastroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".telas.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
