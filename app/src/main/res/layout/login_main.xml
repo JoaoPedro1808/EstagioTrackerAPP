@@ -62,7 +62,7 @@
             android:id="@+id/etUsuario"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="Insira o seu nome de usuário...."
+            android:hint="Insira o seu email..."
             android:paddingStart="48dp"
             android:textColorHint="#8A94A6" />
     </com.google.android.material.textfield.TextInputLayout>

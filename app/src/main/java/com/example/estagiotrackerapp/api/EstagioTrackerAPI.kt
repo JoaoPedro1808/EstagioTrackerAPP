@@ -11,4 +11,12 @@ import retrofit2.http.POST
 interface EstagioTrackerAPI {
     @GET("api/usuarios/listar-usuarios")
     fun listarTodos(): Call<List<Usuario>>
+
+    @POST("api/usuarios/criar-usuario")
+    @FormUrlEncoded
+    fun cadastrarUsuario(
+        @Field("nome") nome: String,
+        @Field("email") email: String,
+        @Field("senha") senha: String
+    ): Call<Usuario>
 }
