@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         val tvCadastreSe = findViewById<TextView>(R.id.tvCadastreSe)
         val btnEntrar = findViewById<Button>(R.id.btnEntrar)
 
+
         btnEntrar.setOnClickListener {
             val email = etUsuario.text.toString().trim()
             val senha = etSenha.text.toString().trim()
@@ -47,7 +48,9 @@ class LoginActivity : AppCompatActivity() {
 
                         if (usuarioEncontrado != null) {
                             Toast.makeText(this@LoginActivity, "Bem-vindo!", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            intent.putExtra("ID_USUARIO", usuarioEncontrado.id)
+                            startActivity(intent)
                             finish()
                         } else {
                             Toast.makeText(this@LoginActivity, "Usuário ou senha incorretos.", Toast.LENGTH_SHORT).show()
@@ -59,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Erro de conexão", Toast.LENGTH_SHORT).show()
                 }
             })
+
         }
 
         tvCadastreSe.setOnClickListener {

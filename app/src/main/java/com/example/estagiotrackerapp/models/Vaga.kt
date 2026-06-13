@@ -6,12 +6,12 @@ import java.time.LocalDate
 
 data class Vaga(
     val id: Long,
-    val nome_empresa: String,
-    val nome_vaga: String,
+    val nomeEmpresa: String,
+    val nomeVaga: String,
     val salario: BigDecimal,
-    val status_kanban: String,
+    val statusKanban: String,
     val modelo: String,
-    val data_aplicacao: LocalDate,
+    val dataAplicacao: LocalDate,
     val descricao: String,
-    val usuario_id: Long
+    val usuarioId: Long
 )
