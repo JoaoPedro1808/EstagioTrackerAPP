@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">EstagioTrackerAPP</string>
+
+    <string-array name="opcoes_kanban">
+        <item>Interesse</item>
+        <item>Inscrito</item>
+        <item>Aprovado</item>
+        <item>Desaprovado</item>
+    </string-array>
+
+    <string-array name="opcoes_modelo">
+        <item>Presencial</item>
+        <item>Híbrido</item>
+        <item>Remoto</item>
+    </string-array>
 </resources>
