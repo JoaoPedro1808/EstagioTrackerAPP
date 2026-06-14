@@ -22,7 +22,7 @@ class NovaVagaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nova_vaga)
 
-        val ivSair = findViewById<ImageView>(R.id.ivSair)
+        val ivVoltar = findViewById<ImageView>(R.id.ivVoltar)
         val etNomeEmpresa = findViewById<EditText>(R.id.etNomeEmpresa)
         val etNomeVaga = findViewById<EditText>(R.id.etNomeVaga)
         val etSalario = findViewById<EditText>(R.id.etSalario)
@@ -34,7 +34,7 @@ class NovaVagaActivity : AppCompatActivity() {
 
         val idUsuarioLogado = intent.getLongExtra("ID_USUARIO", 0L)
 
-        ivSair.setOnClickListener {
+        ivVoltar.setOnClickListener {
             finish()
         }
 

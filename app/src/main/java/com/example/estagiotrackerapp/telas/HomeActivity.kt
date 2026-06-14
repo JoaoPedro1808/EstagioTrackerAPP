@@ -101,7 +101,7 @@ class HomeActivity : AppCompatActivity() {
                     val tresVagasMaisRecentes = todasAsVagas.takeLast(3).reversed()
 
                     rvVagas.layoutManager = LinearLayoutManager(this@HomeActivity)
-                    rvVagas.adapter = VagaAdapter(tresVagasMaisRecentes)
+                    rvVagas.adapter = VagaAdapter(tresVagasMaisRecentes, idDoUsuario)
 
                 } else {
                     Log.e("API_HOME", "Erro na resposta do servidor: ${response.code()}")
@@ -114,7 +114,7 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
-    class VagaAdapter(private val vagas: List<Vaga>) : RecyclerView.Adapter<VagaAdapter.VagaViewHolder>() {
+    class VagaAdapter(private val vagas: List<Vaga>, private val idDoUsuario: Long) : RecyclerView.Adapter<VagaAdapter.VagaViewHolder>() {
         class VagaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val tvNomeVaga: TextView = view.findViewById(R.id.tvNomeVagaItem)
             val tvNomeEmpresa: TextView = view.findViewById(R.id.tvNomeEmpresaItem)
@@ -129,6 +129,22 @@ class HomeActivity : AppCompatActivity() {
             val vagaAtual = vagas[position]
             holder.tvNomeVaga.text = vagaAtual.nomeVaga
             holder.tvNomeEmpresa.text = vagaAtual.nomeEmpresa
+
+            holder.itemView.setOnClickListener {
+                val context = holder.itemView.context
+                val intent = Intent(context, VagaDetalhesActivity::class.java)
+
+                intent.putExtra("ID_USUARIO", idDoUsuario)
+                intent.putExtra("ID_VAGA", vagaAtual.id)
+                intent.putExtra("NOME_VAGA", vagaAtual.nomeVaga)
+                intent.putExtra("NOME_EMPRESA", vagaAtual.nomeEmpresa)
+                intent.putExtra("SALARIO_VAGA", vagaAtual.salario.toDouble())
+                intent.putExtra("MODELO_VAGA", vagaAtual.modelo)
+                intent.putExtra("STATUS_KANBAN", vagaAtual.statusKanban)
+                intent.putExtra("DESCRICAO_VAGA", vagaAtual.descricao)
+
+                context.startActivity(intent)
+            }
         }
 
         override fun getItemCount(): Int = vagas.size

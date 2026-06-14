@@ -8,7 +8,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.PUT
 import retrofit2.http.Query
 import java.math.BigDecimal
 
@@ -40,5 +40,19 @@ interface EstagioTrackerAPI {
         @Field("modelo") modelo: String,
         @Field("descricao") descricao: String,
         @Field("usuarioId") usuarioId: Long
+    ) : Call<Vaga>
+
+    @DELETE("deletar-vaga")
+    fun deletarVaga(@Query("id") id: Long): Call<Void>
+
+    @PUT("atualizar-vaga")
+    fun atualizarVaga(
+        @Query("id") id: Long,
+        @Query("nomeEmpresa") nomeEmpresa: String,
+        @Query("nomeVaga") nomeVaga: String,
+        @Query("salario") salario: String,
+        @Query("statusKanban") statusKanban: String,
+        @Query("modelo") modelo: String,
+        @Query("descricao") descricao: String
     ) : Call<Vaga>
 }

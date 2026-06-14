@@ -88,10 +88,10 @@ class KanbanActivity : AppCompatActivity() {
                         it.statusKanban.equals("DESAPROVADO", ignoreCase = true)
                     }
 
-                    rvInteresse.adapter = VagasKanbanAdapter(vagaInteresse)
-                    rvInscricao.adapter = VagasKanbanAdapter(vagasInscricao)
-                    rvAprovado.adapter = VagasKanbanAdapter(vagasAprovado)
-                    rvDesaprovado.adapter = VagasKanbanAdapter(vagasDesaprovado)
+                    rvInteresse.adapter = VagasKanbanAdapter(vagaInteresse, idUsuario)
+                    rvInscricao.adapter = VagasKanbanAdapter(vagasInscricao, idUsuario)
+                    rvAprovado.adapter = VagasKanbanAdapter(vagasAprovado, idUsuario)
+                    rvDesaprovado.adapter = VagasKanbanAdapter(vagasDesaprovado, idUsuario)
 
                 } else {
                     Log.e("API_KANBAN", "Erro na resposta do servidor: ${response.code()}")
@@ -104,7 +104,7 @@ class KanbanActivity : AppCompatActivity() {
         })
     }
 
-    class VagasKanbanAdapter(private val vagas: List<Vaga>) : RecyclerView.Adapter<VagasKanbanAdapter.VagaViewHolder>() {
+    class VagasKanbanAdapter(private val vagas: List<Vaga>, private val idUsuario: Long) : RecyclerView.Adapter<VagasKanbanAdapter.VagaViewHolder>() {
         class VagaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val tvNomeVaga: TextView = view.findViewById(R.id.tvNomeVagaItem)
             val tvNomeEmpresa: TextView = view.findViewById(R.id.tvNomeEmpresaItem)
@@ -119,6 +119,22 @@ class KanbanActivity : AppCompatActivity() {
             val vagaAtual = vagas[position]
             holder.tvNomeVaga.text = vagaAtual.nomeVaga
             holder.tvNomeEmpresa.text = vagaAtual.nomeEmpresa
+
+            holder.itemView.setOnClickListener {
+                val context = holder.itemView.context
+                val intent = Intent(context, VagaDetalhesActivity::class.java)
+
+                intent.putExtra("ID_USUARIO", idUsuario)
+                intent.putExtra("ID_VAGA", vagaAtual.id)
+                intent.putExtra("NOME_VAGA", vagaAtual.nomeVaga)
+                intent.putExtra("NOME_EMPRESA", vagaAtual.nomeEmpresa)
+                intent.putExtra("SALARIO_VAGA", vagaAtual.salario.toDouble()) // Converte para Double para a intent
+                intent.putExtra("MODELO_VAGA", vagaAtual.modelo)
+                intent.putExtra("STATUS_KANBAN", vagaAtual.statusKanban)
+                intent.putExtra("DESCRICAO_VAGA", vagaAtual.descricao)
+
+                context.startActivity(intent)
+            }
         }
 
         override fun getItemCount(): Int = vagas.size
