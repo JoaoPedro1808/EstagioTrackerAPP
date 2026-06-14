@@ -16,11 +16,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/ivSair"
+            android:id="@+id/ivVoltar"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/icon_exit"
-            android:rotation="180"
+            android:src="@drawable/icon_voltar"
             app:tint="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -155,7 +154,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="16dp">
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_dialog_map" app:tint="#6B7A99"/>
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/icon_modelo" app:tint="#6B7A99"/>
                         <Spinner
                             android:id="@+id/spModelo"
                             android:layout_width="0dp"
