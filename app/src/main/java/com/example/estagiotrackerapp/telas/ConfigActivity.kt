@@ -26,11 +26,13 @@ class ConfigActivity : AppCompatActivity() {
 
         navHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("ID_USUARIO", idUsuarioLogado)
             startActivity(intent)
         }
 
         navKanban.setOnClickListener {
             val intent = Intent(this, KanbanActivity::class.java)
+            intent.putExtra("ID_USUARIO", idUsuarioLogado)
             startActivity(intent)
         }
 

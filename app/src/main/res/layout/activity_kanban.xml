@@ -1,10 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F5FB"
     tools:context=".telas.KanbanActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerKanban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivPerfil"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_perfil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="#6B7A99"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EstágioTracker"
+            android:textColor="#2962FF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivSair"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_exit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="#6B7A99"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/headerKanban"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginEnd="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Interesse"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="16dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvInteresse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_vaga"
+                    tools:itemCount="3"/> </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginEnd="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inscrição"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="16dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvInscricao"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_vaga"
+                    tools:itemCount="2"/> </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginEnd="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aprovado"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="16dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAprovado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_vaga"
+                    tools:itemCount="1"/> </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginEnd="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Desaprovado"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="16dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDesaprovado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_vaga"
+                    tools:itemCount="4"/> </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#FFFFFF"
+        android:elevation="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_home" app:tint="#A0AABF"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Home" android:textColor="#A0AABF" android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navKanban"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <LinearLayout android:layout_width="60dp" android:layout_height="60dp" android:background="@drawable/circulo_azul" android:gravity="center" android:orientation="vertical">
+                <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_kanban" app:tint="#6B7A99"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kanban" android:textColor="#6B7A99" android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navConfig"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_config" app:tint="#A0AABF"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Config" android:textColor="#A0AABF" android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
