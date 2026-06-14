@@ -55,4 +55,10 @@ interface EstagioTrackerAPI {
         @Query("modelo") modelo: String,
         @Query("descricao") descricao: String
     ) : Call<Vaga>
+
+    @GET("buscar-por-nome")
+    fun buscarVagaPorNome(@Query("nomeVaga") nomeVaga: String): Call<List<Vaga>>
+
+    @GET("buscar-por-id")
+    fun buscarVagaPorId(@Query("id") id: Long): Call<Vaga>
 }
